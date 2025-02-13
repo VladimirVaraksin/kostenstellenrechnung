@@ -520,7 +520,7 @@ function checkInputFelder() {
                 }
             } else {
                 if (input.value.trim() === "margostkwismar12345") {
-                    alert("Margo ist nicht nur meine beste Freundin, sondern auch mein Fels in der Brandung. \n" +
+                    confirm("Margo ist nicht nur meine beste Freundin, sondern auch mein Fels in der Brandung. \n" +
                         "Sie hat mir so oft geholfen, immer ein offenes Ohr und ein riesiges Herz. \n" +
                         "Ohne sie wäre vieles nur halb so schön! \n");
                 }
