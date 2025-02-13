@@ -53,7 +53,7 @@ function addHilfskostenstelle() {
         </div>
         <div class="input-group">
             <label for="hilfs-primaere-kosten-${newIndex}">Primäre Kosten:</label>
-            <input type="number" id="hilfs-primaere-kosten-${newIndex}" name="hilfs-primaere-kosten-${newIndex}" placeholder="Primäre Kosten" min="0" value="0">
+            <input type="number" id="hilfs-primaere-kosten-${newIndex}" name="hilfs-primaere-kosten-${newIndex}" placeholder="Primäre Kosten" min="0">
         </div>
     `;
     hilfskostenstellenContainer.appendChild(newBlock);
@@ -75,7 +75,7 @@ function addEndkostenstelle() {
         </div>
         <div class="input-group">
             <label for="end-primaere-kosten-${newIndex}">Primäre Kosten:</label>
-            <input type="number" id="end-primaere-kosten-${newIndex}" name="end-primaere-kosten-${newIndex}" placeholder="Primäre Kosten" min="0" value="0">
+            <input type="number" id="end-primaere-kosten-${newIndex}" name="end-primaere-kosten-${newIndex}" placeholder="Primäre Kosten" min="0">
         </div>
     `;
 
