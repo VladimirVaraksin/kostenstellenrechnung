@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kostenstellenrechnung</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F4F4F4;
+            color: #333333;
+        }
+        header {
+            background-color: #4C566A;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .block {
+            margin: 20px auto;
+            padding: 20px;
+            width: 45%;
+            max-width: 300px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .block h2 {
+            margin-top: 0;
+        }
+        .endkostenstelle {
+            background-color: #8FBCBB;
+        }
+        .hilfskostenstelle {
+            background-color: #88C0D0;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 80%;
+            padding: 8px;
+            border: 1px solid #D8DEE9;
+            border-radius: 4px;
+            text-align: center;
+        }
+        hr {
+            border: 0;
+            height: 3px;
+            background-color: #D8DEE9;
+            margin: 20px 0;
+        }
+        button {
+            display: inline-block;
+            margin: 10px 5px;
+            padding: 10px 20px;
+            background-color: #4C566A;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .tableButtons-container {
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            display: flex;
+        }
+        .tableButtons-container button {
+            padding: 5px 5px;
+            background-color: #4C566A;
+            color: white;
+            width: 200px;
+
+        }
+        button:hover {
+            background-color: #434C5E;
+        }
+        .buttons {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .calculate {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            margin: 20px auto;
+            flex-direction: column;
+        }
+
+        #hilfskostenstellen, #endkostenstellen {
+            display:flex; flex-direction: row; justify-content: center; align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tableContainer {
+            width: 90%;
+            margin: 20px auto 40px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+        }
+        #Anbauverfahren, #Stufenleiterverfahren, #Gleichungsverfahren {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+        th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            background-color: #e5c07b;
+        }
+        tr {
+            background-color: #ffffff;
+        }
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Kostenstellenrechnung</h1>
+    <div class="buttons">
+        <button id="restart" style="background-color: white; color: #4C566A">Restart</button>
+    </div>
+</header>
+
+<div id = "endkostenstellen"></div>
+
+<div class="buttons">
+    <button id="add-endkostenstelle">Neue Endkostenstelle</button>
+</div>
+
+<hr>
+
+<div id = "hilfskostenstellen"></div>
+
+<div class="buttons">
+    <button id="add-hilfskostenstelle">Neue Hilfskostenstelle</button>
+</div>
+
+<hr>
+<div class="calculate">
+    <label for="verrechnungsart" style="margin-top: 20px">Verrechnungsart</label>
+    <select name = "verrechnungsart" id = "verrechnungsart">
+        <option value="Anbauverfahren">Anbauverfahren</option>
+        <option value="Stufenleiterverfahren">Stufenleiterverfahren</option>
+        <option value="Gleichungsverfahren">Gleichungsverfahren</option>
+    </select>
+    <div class="buttons">
+        <button id="calculate">Berechnen</button>
+        <button id = "export" style="display: none; padding: 5px 5px;">Alle Tabellen als CSV exportieren</button>
+    </div>
+</div>
+
+<script src="index_updated.js"></script>
+</body>
+</html>
