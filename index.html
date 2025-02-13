@@ -126,6 +126,59 @@
             border: 1px solid #ddd;
             padding: 8px;
         }
+        @media (max-width: 768px) { /* Für normale Tablets im Hochformat und kleine Tablets */
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .block {
+                width: 90%; /* Fast volle Breite auf Tablets */
+            }
+
+            input {
+                width: 100%; /* Volle Breite für komfortables Tippen */
+            }
+
+            button {
+                font-size: 0.9rem; /* Kleinere Schrift auf kleinen Bildschirmen */
+            }
+        }
+
+        @media (max-width: 480px) { /* Für Mobilgeräte im Hochformat (kleine Smartphones) */
+            body {
+                font-size: 14px; /* Kleinere Basis-Schriftgröße */
+            }
+
+            header {
+                font-size: 1rem;
+                padding: 10px;
+            }
+
+            .block {
+                margin: 15px auto;
+                padding: 15px;
+            }
+
+            .tableButtons-container {
+                flex-direction: column; /* Buttons übereinander stapeln */
+                width: 100%;
+            }
+
+            #Anbauverfahren, #Stufenleiterverfahren, #Gleichungsverfahren {
+                font-size: 12px;
+                display: block; /* Tabelle wird scrollbar */
+                overflow-x: auto;
+            }
+
+            th, td {
+                padding: 5px; /* Kleinere Zellenabstände für Mobilgeräte */
+            }
+
+            button {
+                font-size: 0.8rem;
+                width: 100%; /* Volle Breite der Buttons */
+            }
+        }
     </style>
 </head>
 <body>
