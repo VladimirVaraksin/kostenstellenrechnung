@@ -207,13 +207,27 @@ function anbauverfahren(vart) {
     let hilfskostenstellen = getArrayHilfskostenstellen();
 
     for (const hkst of hilfskostenstellen) {
+        if (hkst.leistungen.length !== 0 && hkst.leistungen.every(leistung => leistung.id.startsWith("h"))) {
+            hkst.vstz = hkst.primaereGK / hkst.gesamtLeistung;
+            for (const leistung of hkst.leistungen) {
+                const hkst2 = returnHilfskostenstelle(leistung.id, hilfskostenstellen);
+                if (hkst2 === null) {
+                    continue;
+                }
+                hkst2.sekundaereGK += Math.round(hkst.vstz * leistung.leistung * 100) / 100;
+            }
+        }
+    }
+
+    for (const hkst of hilfskostenstellen) {
         let leistung_an_endkostenstellen = 0;
         for (const leistung of hkst.leistungen) {
             if (leistung.id.startsWith("e")) {
                 leistung_an_endkostenstellen += leistung.leistung;
             }
         }
-        hkst.vstz = hkst.primaereGK / leistung_an_endkostenstellen;
+        if (leistung_an_endkostenstellen === 0) {continue;}
+        hkst.vstz = (hkst.primaereGK + hkst.sekundaereGK) / leistung_an_endkostenstellen;
         for (const ekst of endkostenstellen) {
             let leistung_an_endkostenstellen = findeLeistung(ekst.id, hkst);
             let umlage = hkst.vstz * leistung_an_endkostenstellen;
