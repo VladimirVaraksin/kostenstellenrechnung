@@ -202,6 +202,15 @@ function deleteKostenstelle(dropdownId, container) {
     }
 }
 
+function returnHilfskostenstelle(id, hksten) {
+    for (const hkst of hksten) {
+        if (hkst.id === id) {
+            return hkst;
+        }
+    }
+    return null;
+}
+
 function anbauverfahren(vart) {
     let endkostenstellen = getArrayEndkostenstellen();
     let hilfskostenstellen = getArrayHilfskostenstellen();
@@ -211,6 +220,7 @@ function anbauverfahren(vart) {
             hkst.vstz = hkst.primaereGK / hkst.gesamtLeistung;
             for (const leistung of hkst.leistungen) {
                 const hkst2 = returnHilfskostenstelle(leistung.id, hilfskostenstellen);
+                console.log(typeof returnHilfskostenstelle);
                 if (hkst2 === null) {
                     continue;
                 }
@@ -236,14 +246,7 @@ function anbauverfahren(vart) {
     }
     displayTable(vart, hilfskostenstellen, endkostenstellen);
 }
-function returnHilfskostenstelle(id, hksten) {
-    for (const hkst of hksten) {
-        if (hkst.id === id) {
-            return hkst;
-        }
-    }
-    return null;
-}
+
 
 function findeLeistung(id, hkst) {
         for (const leistung of hkst.leistungen) {
