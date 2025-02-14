@@ -202,15 +202,6 @@ function deleteKostenstelle(dropdownId, container) {
     }
 }
 
-function returnHilfskostenstelle(id, hksten) {
-    for (const hkst of hksten) {
-        if (hkst.id === id) {
-            return hkst;
-        }
-    }
-    return null;
-}
-
 function anbauverfahren(vart) {
     let endkostenstellen = getArrayEndkostenstellen();
     let hilfskostenstellen = getArrayHilfskostenstellen();
@@ -244,6 +235,14 @@ function anbauverfahren(vart) {
         }
     }
     displayTable(vart, hilfskostenstellen, endkostenstellen);
+}
+function returnHilfskostenstelle(id, hksten) {
+    for (const hkst of hksten) {
+        if (hkst.id === id) {
+            return hkst;
+        }
+    }
+    return null;
 }
 
 function findeLeistung(id, hkst) {
