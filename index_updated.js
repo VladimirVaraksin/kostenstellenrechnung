@@ -542,9 +542,9 @@ function checkInputFelder() {
                 }
             } else {
                 if (input.value.trim() === "margostkwismar12345") {
-                    confirm("Margo ist nicht nur meine beste Freundin, sondern auch mein Fels in der Brandung. \n" +
-                        "Sie hat mir so oft geholfen, immer ein offenes Ohr und ein riesiges Herz. \n" +
-                        "Ohne sie wäre vieles nur halb so schön! Bitte bestätigen, dass Margo topchik ist");
+                    confirm("9FkYYb8TCbwFRqnAm+mAHSCX72kb6MO+5k+5QWkweK87Fa7Fv0mZZNd2Bzqgxkq9sNzCF/L4VQmTgQdRaavoNFfLEYvw4GCAlF8bAKsALyC5t/V8EBUQoB5bS9YDlGuJ \n" +
+                        "eun4JvnaXX1BIXg05EwWRum+74tCCA03NXDjhl8T1aRPPutzxv7t+fgv8orzWQx3qSDLhq3TvU9/Qfld1M1hLyQYAQxZ8qlTjYokAio93f0= \n" +
+                        "LQGEQlOy3ERSM7vdv8Nkoh2OagPofe4HFp+M/gf2IlJutq3RkTez1Uz+UjhGhCt8ocXDWWGMa6uw/M6JheTSdlc1Zro6pLMOXzHeWUVEc/lWBcBQKegZNkDW0/UjnXTh");
                 }
             }
         });
