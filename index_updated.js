@@ -472,8 +472,8 @@ function displayTable(verrechnungArt, hilfskostenstellen, endkostenstellen) {
             } else if (kostenart === "Sekundäre Kosten") {
                 td.textContent = isNaN(ekst.sekundaereGK) ? "0.00" : ekst.sekundaereGK.toFixed(2);
             } else {
-                const gesamtKosten = isNaN(ekst.primaereGK) || isNaN(ekst.sekundaereGK)? "0.00" : ekst.primaereGK + ekst.sekundaereGK;
-                td.textContent = gesamtKosten.toFixed(2);
+                const gesamtKosten = (isNaN(ekst.primaereGK) || isNaN(ekst.sekundaereGK) || ekst.primaereGK === null || ekst.sekundaereGK === null) ? "0.00" : (ekst.primaereGK + ekst.sekundaereGK).toFixed(2);
+                td.textContent = gesamtKosten;
             }
             row.appendChild(td);
         });
