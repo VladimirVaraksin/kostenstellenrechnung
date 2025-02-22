@@ -199,6 +199,11 @@ function deleteKostenstelle(dropdownId, container) {
         container.removeChild(elementToDelete);
 
         updateDropdowns();
+    } else {
+        let dropdown = document.getElementById(dropdownId);
+        if (dropdown && dropdown.options.length > 0) {
+            dropdown.selectedIndex = 0;
+        }
     }
 }
 
@@ -690,9 +695,6 @@ const deleteEndkostenstelleDropdown = document.createElement("select");
 deleteEndkostenstelleDropdown.id = "delete-endkostenstelle";
 addEndkostenstelleButton.parentElement.appendChild(deleteEndkostenstelleDropdown);
 deleteEndkostenstelleDropdown.addEventListener("change", () => {
-    deleteKostenstelle("delete-endkostenstelle", endkostenstellenContainer);
-});
-deleteEndkostenstelleDropdown.addEventListener("mousedown", () => {
     deleteKostenstelle("delete-endkostenstelle", endkostenstellenContainer);
 });
 
