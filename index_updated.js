@@ -468,11 +468,11 @@ function displayTable(verrechnungArt, hilfskostenstellen, endkostenstellen) {
         endkostenstellen.forEach(ekst => {
             const td = document.createElement('td');
             if (kostenart === "Primäre Kosten") {
-                td.textContent = isNaN(ekst.primaereGK) ? "---" : ekst.primaereGK.toFixed(2);
+                td.textContent = isNaN(ekst.primaereGK) ? "0.00" : ekst.primaereGK.toFixed(2);
             } else if (kostenart === "Sekundäre Kosten") {
-                td.textContent = isNaN(ekst.sekundaereGK) ? "---" : ekst.sekundaereGK.toFixed(2);
+                td.textContent = isNaN(ekst.sekundaereGK) ? "0.00" : ekst.sekundaereGK.toFixed(2);
             } else {
-                const gesamtKosten = isNaN(ekst.primaereGK) && isNaN(ekst.sekundaereGK)? "0.00" : ekst.primaereGK + ekst.sekundaereGK;
+                const gesamtKosten = isNaN(ekst.primaereGK) || isNaN(ekst.sekundaereGK)? "0.00" : ekst.primaereGK + ekst.sekundaereGK;
                 td.textContent = gesamtKosten.toFixed(2);
             }
             row.appendChild(td);
