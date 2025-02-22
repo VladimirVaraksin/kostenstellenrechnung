@@ -498,11 +498,17 @@ function displayTable(verrechnungArt, hilfskostenstellen, endkostenstellen) {
     exportButton.onclick = function () {
         exportToCSV(verrechnungArt)
     };
+    const exportToExcelButton = document.createElement('button');
+    exportToExcelButton.textContent = 'Tabelle als XLSX exportieren';
+    exportToExcelButton.onclick = function () {
+        exportToXLSX(verrechnungArt);
+    }
 
     tableContainer.appendChild(table);
     tableContainer.appendChild(buttonsContainer);
     buttonsContainer.appendChild(deleteButton);
     buttonsContainer.appendChild(exportButton);
+    buttonsContainer.appendChild(exportToExcelButton);
     document.body.appendChild(tableContainer);
 }
 function checkRemoveExport() {
@@ -543,6 +549,45 @@ function checkInputFelder() {
             }
         });
     })
+}
+
+function exportToXLSX(tableId = null) {
+    let tables;
+    let wb = XLSX.utils.book_new(); // Neues Workbook erstellen
+
+    if (tableId) {
+        let table = document.getElementById(tableId);
+        if (!table) {
+            console.error("Tabelle mit ID " + tableId + " nicht gefunden.");
+            return;
+        }
+        tables = [table];
+    } else {
+        tables = document.querySelectorAll(".exportTable");
+    }
+
+    if (tables.length === 0) {
+        console.error("Keine Tabellen zum Exportieren gefunden.");
+        return;
+    }
+
+    tables.forEach((table, index) => {
+        let tableName = table.getAttribute("data-table-name") || `Tabelle_${index + 1}`;
+        let rows = table.querySelectorAll("tr");
+
+        let sheetData = [];
+
+        rows.forEach(row => {
+            let cols = row.querySelectorAll("th, td");
+            let rowData = Array.from(cols).map(col => col.innerText.trim());
+            sheetData.push(rowData);
+        });
+
+        let ws = XLSX.utils.aoa_to_sheet(sheetData);
+        XLSX.utils.book_append_sheet(wb, ws, tableName);
+    });
+
+    XLSX.writeFile(wb, "tables_export.xlsx");
 }
 
 function exportToCSV(tableId = null) {
