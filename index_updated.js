@@ -542,9 +542,7 @@ function checkInputFelder() {
                 }
             } else {
                 if (input.value.trim() === "margostkwismar12345") {
-                    confirm("9FkYYb8TCbwFRqnAm+mAHSCX72kb6MO+5k+5QWkweK87Fa7Fv0mZZNd2Bzqgxkq9sNzCF/L4VQmTgQdRaavoNFfLEYvw4GCAlF8bAKsALyC5t/V8EBUQoB5bS9YDlGuJ \n\n" +
-                        "eun4JvnaXX1BIXg05EwWRum+74tCCA03NXDjhl8T1aRPPutzxv7t+fgv8orzWQx3qSDLhq3TvU9/Qfld1M1hLyQYAQxZ8qlTjYokAio93f0= \n\n" +
-                        "LQGEQlOy3ERSM7vdv8Nkoh2OagPofe4HFp+M/gf2IlJutq3RkTez1Uz+UjhGhCt8ocXDWWGMa6uw/M6JheTSdlc1Zro6pLMOXzHeWUVEc/lWBcBQKegZNkDW0/UjnXTh");
+                    confirm("8XvXkw+RzbRLDa2FaRoV0YFDS19L/6bmDHBZX1QhmQZpb9MHsGoKwOC+V6pzpGOAhK1GaM37mSLi4p9t5gI8LQxVSHg0Uly9S4RrrvZbw8M=");
                 }
             }
         });
