@@ -719,6 +719,7 @@ berechnen_button.addEventListener("click", () => {
         } else if (selectedId === "Gleichungsverfahren") {
             gleichungsverfahren();
         }
+        document.getElementById(selectedId).scrollIntoView({ behavior: 'smooth' });
     }
 })
 // Initiale Dropdown-Aktualisierung
