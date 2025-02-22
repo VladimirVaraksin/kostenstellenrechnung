@@ -455,13 +455,10 @@ function displayTable(verrechnungArt, hilfskostenstellen, endkostenstellen) {
         row.appendChild(rowHeader);
 
         // Werte für Hilfskostenstellen hinzufügen
-        hilfskostenstellen.forEach((hkst) => {
+        hilfskostenstellen.forEach(hkst => {
             const td = document.createElement('td');
-            if (Number.isNaN(hkst.sekundaereGK) || Number.isNaN(hkst.primaereGK)) {
-                td.textContent = "---";
-            }
-            else if (kostenart === "Primäre Kosten") {
-                td.textContent = hkst.primaereGK + "";
+            if (kostenart === "Primäre Kosten") {
+                td.textContent = isNaN(hkst.primaereGK) ? "---" : hkst.primaereGK.toFixed(2);
             } else {
                 td.textContent = "---";
             }
@@ -469,28 +466,22 @@ function displayTable(verrechnungArt, hilfskostenstellen, endkostenstellen) {
         });
 
         // Werte für Endkostenstellen hinzufügen
-        endkostenstellen.forEach((ekst) => {
+        endkostenstellen.forEach(ekst => {
             const td = document.createElement('td');
-             if (kostenart === "Primäre Kosten") {
-                td.textContent = ekst.primaereGK + "";
+            if (kostenart === "Primäre Kosten") {
+                td.textContent = isNaN(ekst.primaereGK) ? "---" : ekst.primaereGK.toFixed(2);
             } else if (kostenart === "Sekundäre Kosten") {
-                 if (Number.isNaN(ekst.sekundaereGK)) {
-                    td.textContent = "---";
-                 } else {
-                     td.textContent = Math.round(ekst.sekundaereGK * 100) / 100 + "";
-                 }
+                td.textContent = isNaN(ekst.sekundaereGK) ? "---" : ekst.sekundaereGK.toFixed(2);
             } else {
-                 if (Number.isNaN(ekst.sekundaereGK)) {
-                     td.textContent = "---";
-                 } else {
-                     td.textContent = ekst.primaereGK + Math.round(ekst.sekundaereGK * 100) / 100 + "" + "";
-                 }
+                const gesamtKosten = isNaN(ekst.primaereGK) && isNaN(ekst.sekundaereGK)? "0.00" : ekst.primaereGK + ekst.sekundaereGK;
+                td.textContent = gesamtKosten.toFixed(2);
             }
             row.appendChild(td);
         });
 
         table.appendChild(row);
     });
+    
     const buttonsContainer = document.createElement('div');
     buttonsContainer.setAttribute("class", "tableButtons-container");
 
@@ -502,16 +493,11 @@ function displayTable(verrechnungArt, hilfskostenstellen, endkostenstellen) {
         checkRemoveExport();
     };
 
-
-
     const exportButton = document.createElement('button');
     exportButton.textContent = 'Tabelle als CSV exportieren';
     exportButton.onclick = function () {
         exportToCSV(verrechnungArt)
     };
-
-
-
 
     tableContainer.appendChild(table);
     tableContainer.appendChild(buttonsContainer);
@@ -559,9 +545,6 @@ function checkInputFelder() {
     })
 }
 
-
-
-
 function exportToCSV(tableId = null) {
     let csvContent = "";
     let tables;
@@ -606,7 +589,6 @@ function exportToCSV(tableId = null) {
     link.download = tableId ? `table_${tableId}.csv` : "tables_export.csv";
     link.click();
 }
-
 
 function stufenleiterverfahren() {
     let endkostenstellen = getArrayEndkostenstellen();
@@ -726,9 +708,6 @@ berechnen_button.addEventListener("click", () => {
 })
 // Initiale Dropdown-Aktualisierung
 updateDropdowns();
-
-
-
 
 //OO
 class Kostenstelle {
