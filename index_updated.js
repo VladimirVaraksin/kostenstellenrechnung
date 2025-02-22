@@ -3,12 +3,11 @@ const addHilfskostenstelleButton = document.getElementById("add-hilfskostenstell
 const addEndkostenstelleButton = document.getElementById("add-endkostenstelle");
 const restartButton = document.getElementById("restart");
 const exportButton = document.getElementById("export");
+const exportXLSX = document.getElementById("exportXLSX");
+
 // Container für die Kostenstellen
 let hilfskostenstellenContainer = document.getElementById("hilfskostenstellen");
 let endkostenstellenContainer = document.getElementById("endkostenstellen");
-
-//let hilfskostenstellen = [];
-//let endkostenstellen = [];
 
 // Funktion zum Aktualisieren der Target-IDs nach dem Löschen einer Kostenstelle
 function updateTargetIdsAfterDeletion(deletedId) {
@@ -515,6 +514,7 @@ function checkRemoveExport() {
     const tables = document.querySelectorAll(".exportTable");
     if (tables.length === 0) {
         document.getElementById("export").style.display = "none";
+        document.getElementById("exportXLSX").style.display = "none";
     }
 }
 
@@ -732,6 +732,9 @@ restartButton.addEventListener("click", () => {
 exportButton.addEventListener("click", () => {
     exportToCSV();
 })
+exportXLSX.addEventListener("click", () => {
+    exportToXLSX();
+})
 
 
 const berechnen_button = document.getElementById("calculate");
@@ -739,7 +742,9 @@ berechnen_button.addEventListener("click", () => {
     if (endkostenstellenContainer.children.length > 0 && hilfskostenstellenContainer.children.length > 0) {
         const selectedId = document.getElementById("verrechnungsart").value;
         let exportButton = document.getElementById("export");
+        let exportXLSX = document.getElementById("exportXLSX");
         exportButton.style.display = "block";
+        exportXLSX.style.display = "block";
         checkInputFelder();
         if (selectedId === "Anbauverfahren") {
             anbauverfahren("Anbauverfahren");
