@@ -18,3 +18,7 @@ Dies ist ein **JavaScript-Projekt** zur Durchführung der **Kostenstellenrechnun
 
 - **Erstellung und Export einer Ergebnistabelle**  
   Die berechnete Kostenstellenrechnung wird als Tabelle dargestellt, die als CSV- oder XLSX-Datei exportiert werden kann.
+  
+## Lizenz
+
+Dieses Projekt steht unter der **MIT-Lizenz**. Weitere Informationen findest du in der [LICENSE.txt](./LICENSE.txt)-Datei.
